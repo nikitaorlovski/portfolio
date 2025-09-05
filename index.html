@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Backend Developer — Портфолио</title>
+  <meta name="description" content="Портфолио backend-разработчика: FastAPI, Pydantic, SQLAlchemy, PostgreSQL, Docker, Git, Redis, SQLAdmin." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Backend Developer — Портфолио" />
+  <meta property="og:description" content="FastAPI, Pydantic, SQLAlchemy, PostgreSQL, Docker, Git, Redis, SQLAdmin." />
+  <meta property="og:type" content="website" />
+
+  <!-- Devicon for tech icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --text: #e7e9ee;
+      --muted: #9aa3b2;
+      --brand: #4ade80; /* green */
+      --brand-2: #60a5fa; /* blue */
+      --chip: #1b2332;
+      --chip-border: #2a3344;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --maxw: 1100px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+     background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      letter-spacing: .2px;
+    }
+
+    .container { width: min(100% - 32px, var(--maxw)); margin: 0 auto; }
+
+    header.hero {
+      position: relative;
+      padding: 48px 0 16px;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      font-weight: 700; letter-spacing: .4px;
+    }
+    .brand .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--brand) 30%, transparent 60%);
+      box-shadow: 0 0 18px rgba(74,222,128,.6), 0 0 30px rgba(96,165,250,.35) inset;
+    }
+    .nav a {
+      color: var(--text); text-decoration: none; opacity: .85;
+      margin-left: 18px; font-size: 14px;
+    }
+    .nav a:hover { opacity: 1; }
+    .toggle {
+      border: 1px solid var(--chip-border); background: var(--chip);
+      padding: 8px 12px; border-radius: var(--radius-sm); cursor: pointer;
+      font-size: 14px; color: var(--text);
+       margin-left: 25px; /* или сколько нужно */
+    }
+
+    .hero-card{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:24px;
+}
+
+.hero-card > div:first-child{ display:flex; flex-direction:column; }
+
+.cta{ margin-top:auto; display:flex; gap:12px; flex-wrap:wrap; }
+
+    @media (max-width: 880px) {
+      .hero-card { grid-template-columns: 1fr; }
+    }
+    .hero h1 {
+      margin: 0 0 10px; font-size: clamp(26px, 4vw, 38px); line-height: 1.15;
+    }
+    .subtitle {
+      margin: 0; color: var(--muted);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .chip {
+      background: var(--chip); border: 1px solid var(--chip-border);
+      padding: 8px 12px; border-radius: 999px; font-size: 13px;
+      display: inline-flex; align-items: center; gap: 8px; opacity: .95;
+    }
+    .chip i { font-size: 18px; }
+    .cta {
+      margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    /* --- Кнопки: свежий стиль --- */
+:root{
+  --accent-1:#22d3ee;   /* cyan */
+  --accent-2:#a78bfa;   /* violet */
+  --btn-glow: rgba(34,211,238,.35);
+}
+
+/* Базовые параметры кнопок */
+.btn{
+  position: relative;
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px; padding:12px 18px;
+  border-radius:14px; font-weight:700; letter-spacing:.3px;
+  text-decoration:none; cursor:pointer; user-select:none;
+  border:1px solid transparent;
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease, opacity .2s ease;
+  color:#0a0f14; /* контрастный текст на светлом градиенте */
+  background: linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  box-shadow: 0 8px 24px var(--btn-glow), inset 0 0 0 1px rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.08);
+}
+
+/* Основная кнопка — «Aurora» градиент */
+.btn{
+  color: #0a0f14; /* тёмный текст на светлом градиенте для контраста */
+  background:
+    linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  box-shadow:
+    0 8px 24px var(--btn-glow),
+    inset 0 0 0 1px rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.08);
+
+}
+.btn:hover{ transform: translateY(-2px); }
+.btn:active{ transform: translateY(0); box-shadow: 0 4px 14px var(--btn-glow); }
+.btn:focus-visible{ outline:2px solid var(--accent-1); outline-offset:3px; }
+
+.hero-card > div:first-child { display:flex; flex-direction:column; }
+.cta { margin-top: auto; }
+
+
+
+/* ТЁМНАЯ ТЕМА — вторичная кнопка читаемая */
+.btn.secondary{
+  background: linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  box-shadow: 0 6px 18px var(--btn-glow), inset 0 0 0 1px rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.14);
+  opacity:.95;               /* чуть приглушили */
+}
+.btn.secondary:hover{
+  opacity:1;
+  box-shadow: 0 10px 26px var(--btn-glow), inset 0 0 0 1px rgba(255,255,255,.16);
+}
+
+.btn.secondary:focus-visible{
+  outline: 2px solid var(--accent-1);
+  outline-offset: 3px;
+}
+
+
+
+
+
+/* ===== ВЕРТИКАЛЬНЫЙ РИТМ И ФОН СЕКЦИЙ ===== */
+main { --section-gap: 96px; } /* общий ритм между секциями */
+
+main section {
+  position: relative;
+  margin-top: var(--section-gap);
+  scroll-margin-top: 84px; /* якоря не уезжают под навбар */
+}
+
+/* первая секция после hero можно сделать чуть ближе */
+main section:first-of-type { margin-top: 72px; }
+
+
+/* Ровный ритм секций */
+main { --section-gap: 80px; } /* 72–88 по вкусу */
+main > section.container{
+  position: relative;
+  margin-top: var(--section-gap);
+  scroll-margin-top: 80px;
+}
+main > section.container:first-of-type{ margin-top: 64px; }
+
+/* Едва заметный разделитель-«волосок» перед каждой секцией */
+main > section.container::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -20px;
+  width: min(var(--maxw), 100% - 32px);
+  height: 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+  opacity: .9;
+}
+
+
+
+/* Карточка проекта: чёткие области сетки */
+.project-card{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "title links"
+    "desc  desc";
+  gap:10px 16px;
+  align-items:start; /* кнопки и заголовок прижаты к верху */
+}
+.project-card h4{ grid-area:title; margin:0; }
+.project-links{
+  grid-area:links; align-self:start; margin:0;
+  display:flex; gap:8px;
+}
+.project-card p{ grid-area:desc; margin:6px 0 0; color:var(--muted); }
+
+/* компактный вид кнопок внутри проектов */
+/* компактный вид кнопок внутри проектов */
+.project-card .btn,
+.project-card .btn.secondary{
+  padding:8px 12px;
+  border-radius:10px;
+  transform:none !important;
+  font-weight:600;
+  color:#0a0f14;
+  background: linear-gradient(135deg, rgba(34,211,238,.85), rgba(167,139,250,.85)); /* мягкий градиент */
+  border: none;
+  box-shadow: 0 4px 10px rgba(34,211,238,.25);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+.project-card .btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34,211,238,.35);
+  opacity:1;
+}
+
+/* Уважение к reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  .btn{ transition: none; }
+  .btn:hover, .btn.secondary:hover{ transform:none; }
+}
+    .headshot {
+      align-self: center;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(96,165,250,.12), transparent 60%);
+      border: 1px dashed #263045;
+      padding: 22px; text-align: center; color: var(--muted);
+    }
+
+    section { margin-top: 40px; }
+    .section-title {
+      font-size: 22px; margin: 0 0 16px; letter-spacing: .4px;
+    }
+    /* больше межколоночного воздуха в сетках карточек */
+.grid{ display:grid; gap:24px; grid-template-columns:repeat(12,1fr); }
+    .card {
+      background: var(--panel); border: 1px solid #1b2230;
+      border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+    }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    .col-12 { grid-column: span 12; }
+    @media (max-width: 880px) {
+      .col-6, .col-4 { grid-column: span 12; }
+    }
+    .list {
+      margin: 10px 0 0; padding: 0 0 0 18px;
+    }
+    .list li { margin: 6px 0; }
+
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .badge {
+      padding: 8px 10px; border-radius: 10px; font-size: 13px;
+      background: linear-gradient(180deg, rgba(96,165,250,.08), transparent 70%);
+      border: 1px solid var(--chip-border);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .badge i { font-size: 18px; }
+
+
+
+    .timeline {
+  position: relative;
+  padding-left: 27px; /* было 22px, увеличим */
+}
+    .timeline::before {
+      content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px;
+      width: 2px; background: #1f2937;
+    }
+    .t-item { position: relative; margin: 10px 0 16px;  }
+    .t-item::before {
+  content: "";
+  position: absolute;
+  left: -18px;   /* было -6px, теперь внутри поля */
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand-2);
+  box-shadow: 0 0 6px rgba(96,165,250,.6);
+}
+    .muted { color: var(--muted); font-size: 14px; }
+
+    footer {
+      margin: 48px 0 24px; color: var(--muted); text-align: center; font-size: 14px;
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+.timeline {
+  position: relative;
+  padding-left: 42px; /* больше отступ слева для текста */
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 18px; /* линия теперь ровно под кружками */
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: rgba(96,165,250,.4); /* лёгкий синий */
+}
+
+.t-item {
+  position: relative;
+  margin: 20px 0 28px; /* увеличил вертикальные отступы */
+}
+
+.t-item::before {
+  content: "";
+  position: absolute;
+  left: -26px;  /* отодвигаем кружок левее текста */
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #60a5fa, #3b82f6); /* градиент синий */
+  box-shadow: 0 0 8px rgba(96,165,250,.7); /* мягкое свечение */
+}
+
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand"><span class="dot" aria-hidden="true"></span> <span>Backend Developer</span></div>
+        <div>
+          <a href="#skills">Навыки</a>
+          <a href="#stack">Технологии</a>
+          <a href="#projects">Проекты</a>
+          <a href="#contact">Контакты</a>
+          <button id="themeToggle" class="toggle" aria-pressed="false" title="Переключить тему">🌓 Тема</button>
+        </div>
+      </nav>
+
+      <div class="hero-card" role="region" aria-label="Вступительный блок">
+        <div>
+          <h1>Привет! Я backend-разработчик</h1>
+          <p class="subtitle">Строю удобные и быстрые API-сервисы на <strong>FastAPI</strong>, работаю с <strong>Pydantic</strong>, <strong>SQLAlchemy</strong> и базами на <strong>PostgreSQL</strong>. Контейнеризую проекты в <strong>Docker</strong>, выкатываю на Git, использую <strong>Redis</strong> и пробовал <strong>SQLAdmin</strong>. Везде, где возможно, использую аннотации типов.</p>
+
+          <div class="chips" aria-label="Ключевые технологии">
+            <span class="chip"><i class="devicon-python-plain"></i>Python</span>
+            <span class="chip"><i class="devicon-fastapi-plain"></i>FastAPI</span>
+            <span class="chip"><i class="devicon-postgresql-plain"></i>PostgreSQL</span>
+            <span class="chip"><i class="devicon-sqlalchemy-plain"></i>SQLAlchemy</span>
+            <span class="chip"><i class="devicon-docker-plain"></i>Docker & Compose</span>
+            <span class="chip"><i class="devicon-redis-plain"></i>Redis</span>
+            <span class="chip"><i class="devicon-git-plain"></i>Git</span>
+          </div>
+
+          <div class="cta">
+            <a class="btn" href="#projects">Смотреть проекты</a>
+            <a class="btn secondary" href="#contact">Связаться</a>
+          </div>
+        </div>
+
+        <div class="headshot">
+  <img src="avatar.jpg" alt="Моё фото" style="max-width:100%; border-radius:12px;" />
+</div>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="skills" class="container">
+      <h2 class="section-title">⚡ Основные навыки</h2>
+      <div class="grid">
+        <div class="card col-6">
+          <h3>API & Валидация</h3>
+          <ul class="list">
+            <li>Проектирование REST-эндпоинтов на <strong>FastAPI</strong>, роутинг, dependency injection.</li>
+            <li>Схемы данных и валидация через <strong>Pydantic</strong>, строгие аннотации типов.</li>
+            <li>Документация OpenAPI/Swagger, формирование примеров и описаний.</li>
+          </ul>
+        </div>
+        <div class="card col-6">
+          <h3>Данные и хранение</h3>
+          <ul class="list">
+            <li><strong>SQLAlchemy</strong>: декларативные модели, сессии, связи.</li>
+            <li><strong>PostgreSQL</strong>: проектирование схем, индексы, SQL-запросы.</li>
+            <li><strong>Redis</strong> (начальный уровень): кэширование и простые очереди.</li>
+            <li><strong>Alembic</strong>: базовые миграции.</li>
+          </ul>
+        </div>
+        <div class="card col-6">
+          <h3>Инфраструктура</h3>
+          <ul class="list">
+            <li><strong>Docker</strong>: контейнеризация приложения и зависимостей.</li>
+            <li><strong>Docker Compose</strong> (базово): запуск связанных сервисов (app, db, redis).</li>
+            <li><strong>Git</strong>: ветки, pull-requests, базовый CI/CD (при необходимости).</li>
+          </ul>
+        </div>
+        <div class="card col-6">
+          <h3>Администрирование и тулзы</h3>
+          <ul class="list">
+            <li><strong>SQLAdmin</strong>: пробные интеграции админ-панели для моделей SQLAlchemy.</li>
+            <li>Линтинг/форматирование: <strong>ruff / black</strong></li>
+            <li>Тестирование: <strong>pytest</strong> (базовое покрытие критичных частей).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Подключение Font Awesome (например, через CDN) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<section id="stack" class="container">
+  <h2 class="section-title">🧰 Технологический стек</h2>
+  <div class="card">
+    <div class="badge-row" role="list">
+      <span class="badge" role="listitem"><i class="devicon-python-plain"></i>Python 3.12+</span>
+      <span class="badge" role="listitem"><i class="devicon-fastapi-plain"></i>FastAPI</span>
+      <span class="badge" role="listitem"><i class="fa-solid fa-shield-halved"></i>Pydantic</span>
+      <span class="badge" role="listitem"><i class="devicon-sqlalchemy-plain"></i>SQLAlchemy</span>
+      <span class="badge" role="listitem"><i class="devicon-postgresql-plain"></i>PostgreSQL</span>
+      <span class="badge" role="listitem"><i class="devicon-redis-plain"></i>Redis</span>
+      <span class="badge" role="listitem"><i class="devicon-docker-plain"></i>Docker</span>
+      <span class="badge" role="listitem"><i class="devicon-docker-plain"></i>Docker Compose</span>
+      <span class="badge" role="listitem"><i class="devicon-git-plain"></i>Git</span>
+      <span class="badge" role="listitem"><i class="devicon-linux-plain"></i>Linux</span>
+      <span class="badge" role="listitem"><i class="devicon-python-plain"></i>Aiogram</span>
+      <span class="badge" role="listitem"><i class="fa-solid fa-network-wired"></i>Requests</span>
+      <span class="badge" role="listitem"><i class="fa-solid fa-arrows-spin"></i>Asyncio</span>
+    </div>
+  </div>
+</section>
+
+
+    <section id="projects" class="container">
+      <h2 class="section-title">📦 Проекты</h2>
+      <div class="grid">
+        <div class="card col-12 project-card">
+          <h4>ToDoList сервис на FastAPI</h4>
+          <div class="project-links">
+            <a class="btn secondary" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <p>REST API с аутентификацией, схемами Pydantic, ORM на SQLAlchemy. Есть Web-интерфейс реализованный на Jinja2</p>
+        </div>
+
+        <div class="card col-12 project-card">
+          <h4>Сервис сокращения ссылок</h4>
+          <div class="project-links">
+            <a class="btn secondary" href="https://github.com/nikitaorlovski/URLShorter" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <p>REST API сервис сокращения ссылок: CRUD-операции и редирект по коротким ссылкам. Реализован на FastAPI с использованием SQLAlchemy (ORM) и PostgreSQL. Контейнеризация через Docker Compose.</p>
+        </div>
+
+<!--        <div class="card col-12 project-card">-->
+<!--          <h4></h4>-->
+<!--          <div class="project-links">-->
+<!--            <a class="btn secondary" href="#" target="_blank" rel="noopener">GitHub</a>-->
+<!--          </div>-->
+<!--          <p></p>-->
+<!--        </div>-->
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <div class="timeline" aria-label="Хронология навыков">
+  <div class="t-item">
+    <strong>2023 → Изучение Python</strong>
+    <div class="muted">Основы синтаксиса, работа с файлами, первые скрипты</div>
+  </div>
+  <div class="t-item">
+    <strong>2024 → Углубление в Python, первые фреймворки</strong>
+    <div class="muted">Работа с ООП, модулями; разработка Telegram-ботов на <strong>aiogram</strong></div>
+  </div>
+  <div class="t-item">
+    <strong>2025 → Плотное изучение FastAPI и других фреймворков</strong>
+    <div class="muted">Создание Pet-проектов, интеграция SQLAlchemy, PostgreSQL, Redis, и др, работа на фрилансе</div>
+  </div>
+</div>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2 class="section-title">📫 Контакты</h2>
+      <div class="grid">
+        <div class="card col-6">
+          <p>Открыт к предложениям и сотрудничеству. Лучше всего писать в Telegram.</p>
+          <ul class="list">
+            <li><strong>GitHub:</strong> <a href="https://github.com/nikitaorlovski" target="_blank" rel="noopener">Тык</a></li>
+            <li><strong>Telegram:</strong> <a href="https://t.me/killchiks" target="_blank" rel="noopener">@killchiks</a></li>
+            <li><strong>Email:</strong> <a href="mailto:orlovski15555@gmail.com">orlovski15555@gmail.com</a></li>
+            <li><strong>Страна:</strong> Беларусь</li>
+          </ul>
+        </div>
+        <div class="card col-6">
+          <h3>Чем могу быть полезен</h3>
+          <ul class="list">
+            <li>Дизайн и реализация REST API на FastAPI.</li>
+            <li>Моделирование данных на SQLAlchemy, PostgreSQL.</li>
+            <li>Контейнеризация сервиса, базовое CI/CD, деплой pet-проектов.</li>
+            <li>Базовое кэширование/очереди на Redis.</li>
+            <li>Интеграция админ-панели (SQLAdmin) для удобной работы с данными.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Сделано с любовью к чистому коду • killchik Solution
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const saved = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'dark');
+    document.documentElement.dataset.theme = saved;
+
+    function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.style.setProperty('--bg', '#f6f7fb');
+    document.documentElement.style.setProperty('--panel', '#ffffff');
+    document.documentElement.style.setProperty('--text', '#0b0d12');
+    document.documentElement.style.setProperty('--muted', '#566072');
+    document.documentElement.style.setProperty('--chip', '#f2f4f8');
+    document.documentElement.style.setProperty('--chip-border', '#e6e9f0');
+  } else {
+    document.documentElement.style.setProperty('--bg', '#0b0d12');
+    document.documentElement.style.setProperty('--panel', '#11141b');
+    document.documentElement.style.setProperty('--text', '#e7e9ee');
+    document.documentElement.style.setProperty('--muted', '#9aa3b2');
+    document.documentElement.style.setProperty('--chip', '#1b2332');
+    document.documentElement.style.setProperty('--chip-border', '#2a3344');
+  }
+  localStorage.setItem('theme', theme);
+  toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+}
+
+
+    applyTheme(saved);
+
+    toggle.addEventListener('click', () => {
+      const next = (localStorage.getItem('theme') || 'dark') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+  </script>
+</body>
+</html>
